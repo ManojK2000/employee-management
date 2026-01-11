@@ -1,31 +1,13 @@
 {
   "employees": [
     {
-      "id": "4ca1",
-      "name": "Manoj teja",
-      "gender": "Male",
-      "dob": "2000-11-19",
-      "state": "Punjab",
-      "active": true,
-      "image": "blob:http://localhost:3000/b844db53-7363-4e8e-b548-e89cdc984857"
-    },
-    {
-      "id": "0d19",
-      "name": "raja",
-      "gender": "Male",
-      "dob": "2026-01-17",
-      "state": "Maharashtra",
+      "id": "3230",
+      "name": "MANI",
+      "gender": "Female",
+      "dob": "2026-01-02",
+      "state": "Jharkhand",
       "active": false,
-      "image": "blob:http://localhost:3000/5f6b792f-03d1-415b-be27-7047536e73bc"
-    },
-    {
-      "id": "59ca",
-      "name": "chinnamani",
-      "gender": "Male",
-      "dob": "2025-03-06",
-      "state": "Manipur",
-      "active": true,
-      "image": "blob:http://localhost:3000/b94589f5-2c27-4cf5-8afc-0d78fdf7ab3e"
+      "image": "blob:http://localhost:3000/b2786df3-e881-43a4-8b9f-8fdd0b8bc877"
     }
   ]
 }

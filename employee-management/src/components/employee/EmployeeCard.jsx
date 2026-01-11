@@ -20,15 +20,12 @@ const EmployeeCard = ({ emp, onEdit, onDelete, onToggle }) => {
       <td>{emp.state}</td>
 
       <td>
-        <div className="cell-center">
-          <input
-            type="checkbox"
-            checked={emp.active}
-            onChange={() => onToggle(emp)}
-          />
-        </div>
+        <input
+          type="checkbox"
+          checked={emp.active}
+          onChange={() => onToggle(emp)}
+        />
       </td>
-
       <td>
         <div className="cell-center actions">
           <button
@@ -38,7 +35,6 @@ const EmployeeCard = ({ emp, onEdit, onDelete, onToggle }) => {
           >
             <FaEdit />
           </button>
-
           <button
             className="icon-btn delete"
             title="Delete"
@@ -46,7 +42,6 @@ const EmployeeCard = ({ emp, onEdit, onDelete, onToggle }) => {
           >
             <FaTrash />
           </button>
-
           <button
             className="icon-btn print"
             title="Print"

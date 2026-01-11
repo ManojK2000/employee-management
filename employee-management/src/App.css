@@ -12,14 +12,12 @@
 
 body {
   font-family: "Inter", system-ui, -apple-system, sans-serif;
-  background-color: #f9fafb;
+  background: linear-gradient(135deg, #2563eb, #22c55e);
   color: #111827;
   line-height: 1.6;
 }
 
-/* =========================
-   LOGIN PAGE
-========================= */
+/* LOGIN PAGE */
 .container {
   min-height: 100vh;
   display: flex;
@@ -30,9 +28,9 @@ body {
 .card {
   display: flex;
   width: 900px;
-  background: #ffffff;
+  background: linear-gradient(105deg, #3972ee, #22c55e);
   border-radius: 14px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 15px 35px rgba(0, 0.9, 0, 0.9);
   overflow: hidden;
 }
 
@@ -43,7 +41,6 @@ body {
 
 .right-panel {
   width: 50%;
-  background: #eef2ff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,7 +51,7 @@ body {
 }
 
 .logo {
-  color: #4f46e5;
+  color: #dfdeee;
   font-size: 26px;
   font-weight: 700;
 }
@@ -66,7 +63,8 @@ body {
 }
 
 .avatar img {
-  width: 80px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
 }
 
@@ -96,8 +94,8 @@ body {
 .btn {
   width: 100%;
   padding: 12px;
-  background: #4f46e5;
-  color: #ffffff;
+  background: #8bbfe2;
+  color: #131212;
   border: none;
   border-radius: 8px;
   font-weight: 600;
@@ -107,13 +105,14 @@ body {
 
 .btn:hover {
   background: #4338ca;
+  color: #ffffff;
 }
 
 .forgot {
   display: block;
   text-align: center;
   margin-top: 12px;
-  color: #6b7280;
+  color: #d5dce9;
   font-size: 14px;
   text-decoration: none;
 }
@@ -134,7 +133,7 @@ body {
   left: 0;
   right: 0;
   height: var(--header-height);
-  background: #0f172a;
+  background: linear-gradient(90deg, #155e75, #0f172a);
   color: white;
   display: flex;
   align-items: center;
@@ -157,9 +156,14 @@ body {
   white-space: nowrap;
 }
 
+.logo-container img {
+  width: 70px;
+  height: 70px;
+}
+
 .app-icon {
-  width: 36px;
-  height: 36px;
+  width: 50px;
+  height: 50px;
   border-radius: 6px;
   background: linear-gradient(135deg, #2563eb, #7c3aed);
   display: flex;
@@ -183,7 +187,7 @@ body {
   top: var(--header-height);
   left: 0;
   height: calc(100vh - var(--header-height));
-  background: #0f172a;
+  background: linear-gradient(180deg, #0f172a, #164e63);
   color: #e5e7eb;
   transition: width 0.25s ease;
   overflow: hidden;
@@ -241,6 +245,31 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-icon {
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+/* Center icon when sidebar is collapsed */
+.sidebar.closed .sidebar-link {
+  justify-content: center;
+}
+
+.sidebar.closed .sidebar-link span {
+  display: none;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+}
+
 /* MAIN CONTENT*/
 .main-content {
   margin-top: var(--header-height);
@@ -258,27 +287,8 @@ body {
 .main-content.closed {
   margin-left: var(--sidebar-closed-width);
 }
-/* =========================
-   RESPONSIVE (MOBILE)
-========================= */
-@media (max-width: 768px) {
-  .sidebar {
-    position: fixed;
-    transform: translateX(-100%);
-    transition: transform 0.25s ease;
-  }
 
-  .sidebar.open {
-    transform: translateX(0);
-  }
-
-  .main-content {
-    margin-left: 0;
-  }
-}
-/* =========================
-   FILTER CONTAINER
-========================= */
+/* FILTER CONTAINER */
 .employee-filters {
   display: flex;
   gap: 14px;
@@ -287,9 +297,7 @@ body {
   flex-wrap: wrap;
 }
 
-/* =========================
-   INPUT GROUP (LOGIN STYLE)
-========================= */
+/* INPUT GROUP (LOGIN STYLE) */
 .input-group {
   display: flex;
   align-items: center;
@@ -317,26 +325,13 @@ body {
   font-size: 14px;
 }
 
-/* =========================
-   RESET BUTTON (MATCH STYLE)
-========================= */
-/* Override input-group ONLY for reset */
+/* RESET BUTTON*/
 .reset-group {
   min-width: auto;
   padding: 4px 8px;
 }
 
-/* Reset button style */
 .reset-btn {
-  /* border: none;
-  background: transparent;
-  font-size: 13px;
-  font-weight: 500;
-  color: #6366f1;
-  cursor: pointer;
-  padding: 0;
-  text-align: center; */
-
   padding: 8px 14px;
   background: #ef4444;
   color: #ffffff;
@@ -375,7 +370,6 @@ body {
 .filters-left {
   display: flex;
   flex: 1;
-  /* pushes Add Employee to extreme right */
 }
 
 /* Filters row */
@@ -399,7 +393,6 @@ body {
 }
 
 .employee-table input[type="checkbox"] {
-  /* transform: scale(1.1); */
   cursor: pointer;
   vertical-align: middle;
 }
@@ -481,30 +474,35 @@ td button {
 .add-employee-btn {
   min-width: 160px;
   height: 42px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: 1px solid #e5e7eb;
   border-radius: 10px;
   background: #ffffff;
-
   font-size: 18px;
   font-weight: 500;
   color: #111827;
-
   cursor: pointer;
   white-space: nowrap;
+  margin-left: auto;
 }
 
 .add-employee-btn:hover {
-  background: #f9fafb;
+  background: #157ce4;
+}
+/* .add-employee-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* 🔥 space between icon & text 
+  cursor: pointer;
+} */
+
+.add-icon {
+  font-size: 16px;
 }
 
-/* =========================
-   MODAL OVERLAY
-========================= */
+/* MODAL OVERLAY */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -528,6 +526,30 @@ td button {
   animation: popupFade 0.25s ease;
 }
 
+.confirm-modal {
+  width: 350px;
+  text-align: center;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn.danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
 /* Animation */
 @keyframes popupFade {
   from {
@@ -540,9 +562,7 @@ td button {
   }
 }
 
-/* =========================
-   EMPLOYEE FORM
-========================= */
+/*EMPLOYEE FORM */
 .employee-form {
   display: flex;
   flex-direction: column;
@@ -602,7 +622,7 @@ td button {
 }
 
 .btn-secondary {
-  background: #f3f4f6;
+  background: #f00404d5;
   border: none;
   padding: 10px 18px;
   border-radius: 8px;

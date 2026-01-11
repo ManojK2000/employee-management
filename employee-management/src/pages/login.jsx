@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { FaUser, FaLock } from "react-icons/fa";
+import logo from "../assets/images/logo.png";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -35,13 +36,9 @@ function Login() {
     <div className="container">
       <div className="card">
         <div className="left-panel">
-          <h2 className="logo">HRMS</h2>
-
+          <h2 className="logo">E M S</h2>
           <div className="avatar">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-              alt="user"
-            />
+            <img src={logo} alt="user" />
           </div>
 
           <h3 className="signin-title">Sign In</h3>
@@ -74,12 +71,11 @@ function Login() {
             </button>
           </form>
 
-          <a href="#" className="forgot">
+          <a href="/" className="forgot">
             Forgot Password?
           </a>
         </div>
 
-        {/* RIGHT PANEL */}
         <div className="right-panel">
           <img
             src="https://illustrations.popsy.co/amber/work-from-home.svg"

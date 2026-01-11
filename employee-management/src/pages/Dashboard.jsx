@@ -1,6 +1,13 @@
-import Header from "../components/layout/Header";
-import Sidebar from "../components/layout/Sidebar";
 import React, { useEffect, useState } from "react";
+import { FaUserPlus } from "react-icons/fa";
+
+import Header from "../../components/layout/Header";
+import Sidebar from "../components/layout/Sidebar";
+import EmployeeList from "../components/employee/EmployeeList";
+import EmployeeForm from "../components/employee/EmployeeForm";
+import EmployeeFilters from "../components/employee/EmployeFilters";
+import ConfirmModal from "../components/common/ConfirmModal";
+
 import {
   getEmployees,
   addEmployee,
@@ -8,56 +15,17 @@ import {
   deleteEmployee,
 } from "../services/EmployeeService";
 
-import EmployeeList from "../components/employee/EmployeeList";
-import EmployeeForm from "../components/employee/EmployeeForm";
-import EmployeeFilters from "../components/employee/EmployeFilters";
 export default function Dashboard() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(null);
   const [showForm, setShowForm] = useState(false);
-
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [search, setSearch] = useState("");
   const [gender, setGender] = useState("");
   const [status, setStatus] = useState("");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
-  const totalEmployees = employees.length;
-
-  const activeCount = employees.filter((e) => e && e.active === true).length;
-
-  const inactiveCount = employees.filter((e) => e && e.active === false).length;
-
-  useEffect(() => {
-    getEmployees().then((data) => {
-      setEmployees(data);
-      setLoading(false);
-    });
-  }, []);
-
-  const handleDelete = async (id) => {
-    await deleteEmployee(id);
-    await fetchEmployees();
-  };
-
-  const handleEdit = (emp) => {
-    setSelected(emp);
-    setShowForm(true);
-  };
-
-  const handleAddEmployee = () => {
-    setSelected(null);
-    setShowForm(true);
-  };
-  const filteredEmployees = employees.filter((e) => {
-    if (!e || !e.name) return false; // 🔥 safety guard
-
-    return (
-      e.name.toLowerCase().includes(search.toLowerCase()) &&
-      (!gender || e.gender === gender) &&
-      (!status || (status === "active" ? e.active : !e.active))
-    );
-  });
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
 
   const fetchEmployees = async () => {
     setLoading(true);
@@ -65,26 +33,61 @@ export default function Dashboard() {
     setEmployees(data);
     setLoading(false);
   };
+
   useEffect(() => {
     fetchEmployees();
   }, []);
+
+  const totalEmployees = employees.length;
+  const activeCount = employees.filter((e) => e.active).length;
+  const inactiveCount = employees.filter((e) => !e.active).length;
+
+  const filteredEmployees = employees.filter((e) => {
+    if (!e?.name) return false;
+    return (
+      e.name.toLowerCase().includes(search.toLowerCase()) &&
+      (!gender || e.gender === gender) &&
+      (!status || (status === "active" ? e.active : !e.active))
+    );
+  });
+
+  const handleAddEmployee = () => {
+    setSelected(null);
+    setShowForm(true);
+  };
+
+  const handleEdit = (emp) => {
+    setSelected(emp);
+    setShowForm(true);
+  };
+
+  const handleSave = async (emp) => {
+    emp.id ? await updateEmployee(emp) : await addEmployee(emp);
+    await fetchEmployees();
+    setShowForm(false);
+    setSelected(null);
+  };
 
   const handleToggle = async (emp) => {
     await updateEmployee({ ...emp, active: !emp.active });
     await fetchEmployees();
   };
 
-  const handleSave = async (emp) => {
-    if (emp.id) {
-      await updateEmployee(emp);
-    } else {
-      await addEmployee(emp);
-    }
+  const handleDeleteClick = (id) => {
+    setDeleteId(id);
+    setShowConfirm(true);
+  };
 
-    await fetchEmployees(); // 🔥 refresh list
+  const confirmDelete = async () => {
+    await deleteEmployee(deleteId);
+    await fetchEmployees();
+    setShowConfirm(false);
+    setDeleteId(null);
+  };
 
-    setShowForm(false);
-    setSelected(null);
+  const cancelDelete = () => {
+    setShowConfirm(false);
+    setDeleteId(null);
   };
 
   return (
@@ -97,14 +100,14 @@ export default function Dashboard() {
 
       <main className={`main-content ${isSidebarOpen ? "open" : "closed"}`}>
         <h2>Employee Dashboard</h2>
+
         <div className="empstatus">
-          <p>Total Employees: {totalEmployees}</p>
-          <p>Active Employees: {activeCount}</p>
-          <p>Inactive Employees: {inactiveCount}</p>
+          <p>Total: {totalEmployees}</p>
+          <p>Active: {activeCount}</p>
+          <p>Inactive: {inactiveCount}</p>
         </div>
 
         <div className="filters-bar">
-          {/* LEFT SIDE FILTERS */}
           <div className="filters-left">
             <EmployeeFilters
               search={search}
@@ -116,12 +119,12 @@ export default function Dashboard() {
             />
           </div>
 
-          {/* RIGHT SIDE BUTTON */}
           <div
             className="input-group add-employee-btn"
             onClick={handleAddEmployee}
           >
-            Add Employee
+            <FaUserPlus className="add-icon" />
+            <span>Add Employee</span>
           </div>
         </div>
 
@@ -141,10 +144,19 @@ export default function Dashboard() {
           employees={filteredEmployees}
           isLoading={loading}
           onEdit={handleEdit}
-          onDelete={handleDelete}
+          onDelete={handleDeleteClick}
           onToggle={handleToggle}
         />
       </main>
+
+      {showConfirm && (
+        <ConfirmModal
+          title="Delete Employee"
+          message="Are you sure you want to delete this employee?"
+          onConfirm={confirmDelete}
+          onCancel={cancelDelete}
+        />
+      )}
     </>
   );
 }

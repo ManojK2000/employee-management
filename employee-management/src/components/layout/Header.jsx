@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { FaSignOutAlt } from "react-icons/fa";
+import logo from "../../assets/images/logo.png";
 
 export default function Header() {
   const { logout } = useAuth();
@@ -15,6 +16,7 @@ export default function Header() {
   return (
     <header className="app-header">
       <div className="logo-container">
+        <img src={logo} alt="App Logo" />
         <h1>Employee Management System</h1>
       </div>
 

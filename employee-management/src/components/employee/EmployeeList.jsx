@@ -2,10 +2,7 @@ import EmployeeCard from "./EmployeeCard";
 
 const EmployeeList = ({ employees, isLoading, onEdit, onDelete, onToggle }) => {
   if (isLoading) return <p>Loading employees...</p>;
-
-  if (!employees.length) {
-    return <p style={{ textAlign: "center" }}>No employees found</p>;
-  }
+  if (!employees.length) return <p>No employees found</p>;
 
   return (
     <table width="100%" cellPadding="10">
@@ -21,6 +18,7 @@ const EmployeeList = ({ employees, isLoading, onEdit, onDelete, onToggle }) => {
           <th>Actions</th>
         </tr>
       </thead>
+
       <tbody>
         {employees.map((emp) => (
           <EmployeeCard
