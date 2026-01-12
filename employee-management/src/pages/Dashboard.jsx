@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaUserPlus } from "react-icons/fa";
 
-import Header from "../../components/layout/Header";
+import Header from "../components/layout/Header";
 import Sidebar from "../components/layout/Sidebar";
 import EmployeeList from "../components/employee/EmployeeList";
 import EmployeeForm from "../components/employee/EmployeeForm";

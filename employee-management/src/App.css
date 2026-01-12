@@ -636,3 +636,21 @@ td button {
   flex-wrap: wrap;
   padding: 10px 0px;
 }
+
+@media print {
+  /* Ensure colors are printed when enabled */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Optional: hide sidebar */
+  .sidebar {
+    display: inline;
+  }
+
+  /* Optional: hide header */
+  .app-header {
+    display: flex;
+  }
+}

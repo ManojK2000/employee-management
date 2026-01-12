@@ -1,13 +1,31 @@
 {
   "employees": [
     {
-      "id": "3230",
-      "name": "MANI",
+      "id": "92c1",
+      "name": "Manoj",
+      "gender": "Male",
+      "dob": "2006-11-28",
+      "state": "Bihar",
+      "active": true,
+      "image": "blob:http://localhost:3000/d9b0b5f4-7afa-4b6e-9a8f-bf1c962f5eda"
+    },
+    {
+      "id": "93e1",
+      "name": "Deepika",
       "gender": "Female",
-      "dob": "2026-01-02",
-      "state": "Jharkhand",
+      "dob": "2009-06-09",
+      "state": "Arunachal Pradesh",
+      "active": true,
+      "image": "blob:http://localhost:3000/aeae1994-aaa9-4678-a96a-317edd4b240b"
+    },
+    {
+      "id": "8d15",
+      "name": "Lasya",
+      "gender": "Female",
+      "dob": "2013-12-17",
+      "state": "Karnataka",
       "active": false,
-      "image": "blob:http://localhost:3000/b2786df3-e881-43a4-8b9f-8fdd0b8bc877"
+      "image": "blob:http://localhost:3000/2cfe10a8-9f55-40cb-bdf3-d4a08b349c86"
     }
   ]
 }
