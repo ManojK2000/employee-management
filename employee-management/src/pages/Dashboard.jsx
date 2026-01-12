@@ -102,7 +102,7 @@ export default function Dashboard() {
         <h2>Employee Dashboard</h2>
 
         <div className="empstatus">
-          <p>Total: {totalEmployees}</p>
+          <p>Total Employees: {totalEmployees}</p>
           <p>Active: {activeCount}</p>
           <p>Inactive: {inactiveCount}</p>
         </div>

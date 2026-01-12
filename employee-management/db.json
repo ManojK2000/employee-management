@@ -2,21 +2,12 @@
   "employees": [
     {
       "id": "92c1",
-      "name": "Manoj",
+      "name": "Manoj teja",
       "gender": "Male",
       "dob": "2006-11-28",
-      "state": "Bihar",
+      "state": "Himachal Pradesh",
       "active": true,
-      "image": "blob:http://localhost:3000/d9b0b5f4-7afa-4b6e-9a8f-bf1c962f5eda"
-    },
-    {
-      "id": "93e1",
-      "name": "Deepika",
-      "gender": "Female",
-      "dob": "2009-06-09",
-      "state": "Arunachal Pradesh",
-      "active": true,
-      "image": "blob:http://localhost:3000/aeae1994-aaa9-4678-a96a-317edd4b240b"
+      "image": "blob:http://localhost:3000/88c32ac9-d762-4ac7-a915-07ba41068178"
     },
     {
       "id": "8d15",
@@ -25,7 +16,16 @@
       "dob": "2013-12-17",
       "state": "Karnataka",
       "active": false,
-      "image": "blob:http://localhost:3000/2cfe10a8-9f55-40cb-bdf3-d4a08b349c86"
+      "image": "blob:http://localhost:3000/824d8fa0-300a-4f2d-8bb7-fa082dc9fd65"
+    },
+    {
+      "id": "25bc",
+      "name": "raja kumar",
+      "gender": "Male",
+      "dob": "2026-01-01",
+      "state": "Gujarat",
+      "active": true,
+      "image": "blob:http://localhost:3000/6c7111e8-3a12-479b-be9c-ce3a178cbc8c"
     }
   ]
 }
