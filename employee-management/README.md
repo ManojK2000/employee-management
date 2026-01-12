@@ -34,7 +34,7 @@ Fetch API (API communication)
 <!-- 🚀 Steps to Run the Project Locally -->
 
 1️⃣ Clone the Repository
-git clone https://github.com/your-username/bookxpert-employee-management.git
+git clone https://github.com/ManojK2000/employee-management.git
 cd bookxpert-employee-management
 
 2️⃣ Install Dependencies
